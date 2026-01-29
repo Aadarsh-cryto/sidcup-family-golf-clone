@@ -27,15 +27,5 @@ The project uses HTML, CSS, and JavaScript with GSAP animations to create a mode
 ## Conclusion
 This project helped improve my understanding of layout handling, animations, and scroll-based interactions using GSAP.
 
-
-
-
-
-
-
-
-
-
-
 ## Author
-Your Name
+**Aadarsh Ojha**
