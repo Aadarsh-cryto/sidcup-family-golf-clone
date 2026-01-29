@@ -1,0 +1,348 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  /* perspective: 800px; */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* NAVBAR */
+#nav {
+  height: 135px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 65px;
+  justify-content: flex-start;
+  padding: 0 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  font-size: 18px;
+}
+
+#nav img {
+  height: 80px;
+}
+
+#nav h4 {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+#cursor{
+    height: 25px;
+    width: 20px;
+    background-color: rgba(37, 96, 37, 0.095);
+    border-radius: 50%;
+    position: fixed;
+    z-index: 99;
+
+}
+#cursor-blur{
+    height: 400px;
+    width: 400px;
+    background-color: #96c11e2b;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 9;
+    filter: blur(50px);
+
+}
+
+/* VIDEO */
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+}
+
+/* MAIN */
+#main {
+  position: relative;
+  padding-top: 135px; /* leave space for fixed nav */
+}
+
+/* OVERLAY */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0;  /* fully transparent at start */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* PAGE SECTIONS */
+#page1  {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 50px;
+  z-index: 10;
+}
+#page2{
+   /* allow section to grow with content instead of clipping at viewport height */
+   height: auto;      /* was 100vh */
+   min-height: 100vh; /* keep at least one viewport tall if you want */
+   width: 100%;
+   z-index: 10;
+   /* padding: 0 50px; */
+    
+}
+
+#page1 h1 {
+  margin-top: -85px;
+  font-size: 140px;
+  margin-bottom: 48px;
+  font-weight: 900;
+  position: relative;
+}
+
+#page1 h1::before {
+  content: "EAT. DRINK. PLAY.";
+  position: absolute;
+  color: #000;
+  top: -5px;
+  left: -6px;
+  -webkit-text-stroke: 1px #95C11E;
+  z-index: -1;
+}
+
+#page1 h2 {
+  font-size: 36px;
+  font-weight: 800;
+  padding-top: 5px;
+  padding-bottom: 32px;
+}
+
+#page1 p {
+  text-align: center;
+  font-size: 28px;
+  line-height: 24px;
+  font-weight: 400;
+  width: 40%;
+  padding-top: 12px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#scroller{
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative
+    ;
+    z-index: 10;
+    
+}
+#scroller::-webkit-scrollbar{
+    display: none;
+}
+#scroller-in{
+display: inline-block;
+white-space: nowrap;
+animation-name: scroll;
+animation-duration: 20s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+
+#scroller h4{
+    display: inline-block;
+    font-size: 80px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    margin-right: 10px;
+    color: transparent;
+    transition: all linear 0.2s;
+    -webkit-text-stroke: 2px rgb(130, 220, 154);
+}
+#scroller h4:hover{
+    color: #95C11E;
+}
+@keyframes scroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+#about-us {
+  min-height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px;
+  position: relative;
+  z-index: 10;
+}
+
+#about-us img {
+  height: 300px;
+  width: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+#aboutusin {
+  width: 40%;
+  text-align: center;
+}
+
+#aboutusin h3 {
+  font-size: 38px;
+  margin-bottom: 18px;
+  font-weight: 800;
+}
+
+#aboutusin p {
+  line-height: 28px;
+  font-size: 26px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#cards-container{
+  /* restore original fixed height to avoid layout shifts */
+  height: 65vh;
+  /* width: 100%; */
+  /* background-color: rgb(161, 59, 59); */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  z-index: 10;
+  /* remove added padding so layout matches original */
+  /* padding: 24px; */
+}
+
+.card{
+  /* restore original sizing/layout */
+  height: 70%;
+  width: 28%;
+  background-color: blue; /* original fallback color */
+  /* keep overlay behavior without changing layout */
+  position: relative;
+  overflow: hidden;
+border-radius: 30px;
+  /* optional styling you can keep/remove */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 6px 18px rgba(0,0,0,0.35); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 16px;
+  z-index: 11;
+  margin-top: 10px;
+  background-size: cover;
+}
+
+/* Ensure overlay fully covers card */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #95C11E; /* full solid cover as requested */
+  z-index: 20;
+  padding-top: 160px;
+  padding: 50px;
+  color: #000; /* readable on green */
+  /* match card rounding if present */
+  border-radius: inherit;
+  opacity: 0;
+  transition: all ease 0.6s;
+  
+}
+.overlay h4{
+  padding-top: 40px;
+color: #000;
+font-size: 40px;
+margin-bottom: 15px;
+white-space: nowrap;
+text-transform: uppercase;
+font-weight: 800;
+text-align: center;
+}
+.overlay p{
+  margin-top: 32px;
+  color: #000;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#card1{
+  background-image: url(./card1.avif);
+}
+#card2{
+  background-image: url(./card2.avif);
+}
+#card3{
+  background-image: url(./card3.avif);
+}
+.card:hover .overlay{
+  opacity: 1;
+}
+.card:hover{
+  transform: rotate3d(-1,1,0,20deg);
+}
+.greendiv{
+  /* use a fixed viewport-based height so children can fill it exactly */
+  position: relative;
+  z-index: 100;
+  margin-top: 40px;
+  height: 30vh;               /* changed from min-height to a definite height */
+  background: linear-gradient(to left bottom);
+  display: flex;
+  align-items: stretch;       /* children will stretch vertically */
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 40px;            /* vertical padding removed so images can be full height */
+  box-sizing: border-box;
+  gap: 20px;
+  color: #000;
+}
+
+.greendiv h4{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  text-transform: uppercase;
+  margin: 0;
+  color: #000;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* images must not shrink and should fill greendiv height while preserving aspect ratio */
+.greendiv img{
+  flex: 0 0 auto;     /* do not grow/shrink, keep natural aspect ratio */
+  height: 100%;       /* fill greendiv height exactly */
+  width: auto;        /* preserve aspect ratio */
+  object-fit: cover;
+  display: block;
+  align-self: stretch;
+}
